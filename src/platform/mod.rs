@@ -13,8 +13,14 @@ mod unix;
 #[cfg(windows)]
 mod windows;
 
+#[cfg(target_os = "twizzler")]
+mod twizzler;
+
 #[cfg(unix)]
 pub use self::unix::*;
 
 #[cfg(windows)]
 pub use self::windows::*;
+
+#[cfg(target_os = "twizzler")]
+pub use self::twizzler::*;
