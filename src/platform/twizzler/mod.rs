@@ -13,11 +13,7 @@ pub type Error = std::io::Error;
 /// Platform specific signal type
 pub type Signal = u32;
 
-const TRUE: BOOL = 1;
-const FALSE: BOOL = 0;
-
-unsafe extern "system" fn os_handler(_: u32) -> BOOL {
-    FALSE
+unsafe extern "system" fn os_handler(_: u32) {
 }
 
 /// Register os signal handler.
