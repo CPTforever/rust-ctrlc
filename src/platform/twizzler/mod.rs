@@ -7,12 +7,8 @@
 // notice may not be copied, modified, or distributed except
 // according to those terms.
 
-use std::io;
-use std::ptr;
-
-
 /// Platform specific error type
-pub type Error = io::Error;
+pub type Error = std::io::Error;
 
 unsafe extern "system" fn os_handler(_: u32) -> BOOL {
     FALSE
@@ -27,9 +23,9 @@ unsafe extern "system" fn os_handler(_: u32) -> BOOL {
 /// Will return an error if a system error occurred.
 ///
 #[inline]
-pub unsafe fn init_os_handler(_overwrite: bool) -> Result<(), Error> {
-    return Err(Error::new(
-        ErrorKind::Unsupported,
+pub unsafe fn init_os_handler(_overwrite: bool) -> Result<(), std::io::Error> {
+    return Err(std::io::Error::new(
+        std::io::ErrorKind::Unsupported,
         "Tell Ashley to complete this",
     )); 
 }
@@ -42,9 +38,9 @@ pub unsafe fn init_os_handler(_overwrite: bool) -> Result<(), Error> {
 /// Will return an error if a system error occurred.
 ///
 #[inline]
-pub unsafe fn block_ctrl_c() -> Result<(), Error> {
-    return Err(Error::new(
-        ErrorKind::Unsupported,
+pub unsafe fn block_ctrl_c() -> Result<(), std::io::Error> {
+    return Err(std::io::Error::new(
+        std::io::ErrorKind::Unsupported,
         "Tell Ashley to complete this",
     )); 
 }
